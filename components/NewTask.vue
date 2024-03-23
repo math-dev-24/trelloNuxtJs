@@ -26,7 +26,7 @@ function createTask(e: Event){
 </script>
 
 <template>
-  <div>
+  <div class="mt-2">
     <textarea
         v-model="title"
         @keydown.tab="createTask"

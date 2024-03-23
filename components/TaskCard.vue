@@ -18,11 +18,11 @@ onKeyStroke("Backspace", (e) => {
 </script>
 
 <template>
-  <div class="border p-1 m-1 rounded task"
+  <div class="border border-gray-300 p-2 m-1 rounded task border-l-8 bg-gray-200"
        :class="{
-        'bg-orange-100' : task.state == 'En cours',
-        'bg-slate-200' : task.state == 'Ouvert',
-        'bg-green-200' : task.state == 'Terminé'
+        'border-l-orange-400' : task.state == 'En cours',
+        'border-l-gray-800' : task.state == 'Ouvert',
+        'border-l-green-600' : task.state == 'Terminé'
        }"
        :title="task.id"
        @focus="focused = true"
@@ -30,7 +30,6 @@ onKeyStroke("Backspace", (e) => {
        tabindex="0"
   >
     <header class="flex gap-1 items-center">
-      <Handle/>
       <span>{{ task.title }}</span>
     </header>
     <p class="italic">{{ task.state }}</p>
