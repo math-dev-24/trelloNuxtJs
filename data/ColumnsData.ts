@@ -1,7 +1,7 @@
 import type {Column} from "~/types";
 import {nanoid} from "nanoid";
 
-export const COLUMNS_DATA =  ref<Column[]>([
+export const COLUMNS_DATA =  useLocalStorage<Column[]>("trelloBoard", [
     {
         id: nanoid(),
         title: "Projet 1",
@@ -27,29 +27,5 @@ export const COLUMNS_DATA =  ref<Column[]>([
         title: "Selected for Dev",
         tasks: []
     },
-    {
-        id: nanoid(),
-        title: "In Progress",
-        tasks: []
-    },
-    {
-        id: nanoid(),
-        title: "QA",
-        tasks: []
-    },
-    {
-        id: nanoid(),
-        title: "Complete",
-        tasks: []
-    },
-    {
-        id: nanoid(),
-        title: "En dév",
-        tasks: []
-    },
-    {
-        id: nanoid(),
-        title: "En dév",
-        tasks: []
-    }
-]);
+]
+);
