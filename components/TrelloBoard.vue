@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { COLUMNS_DATA } from "~/data/ColumnsData";
-import ColumnCard from "~/components/ColumnCard.vue";
 import draggable from "vuedraggable";
 import type {Column} from "~/types";
 import {nanoid} from "nanoid";
@@ -35,7 +34,7 @@ watch(COLUMNS_DATA, () => {
         :animation="150"
         handle=".drag-handle"
         item-key="id"
-        class="flex gap-4 overflow-x-auto item-start"
+        class="flex gap-4 item-start"
     >
       <template #item="{element: column}: {element: Column}">
         <ColumnCard :key="column.id" :column="column" />
@@ -43,10 +42,10 @@ watch(COLUMNS_DATA, () => {
     </draggable>
     <button
         @click="createColumn"
-        class="bg-gray-200 whitespace-nowrap p-2 rounded opacity-50"
+        class="bg-gray-200 whitespace-nowrap px-4 py-2 rounded opacity-50"
 
     >
-      + Add Another Column
+      + Ajoutez une autre liste
     </button>
 
   </div>

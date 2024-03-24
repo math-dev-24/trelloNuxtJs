@@ -1,49 +1,65 @@
 <script setup lang="ts">
-import type {Task, ID} from "~/types";
+import type {Task} from "~/types";
+import {LIST_STATE, type State} from "~/data/StateData";
+import {COLUMNS_DATA} from "~/data/ColumnsData";
 
-const {task} = defineProps<{
+const emit = defineEmits<{
+  (e: "update", payload: Partial<Task>): void
+}>()
+
+const optionTask = ref<boolean>(false)
+
+
+const { task } = defineProps<{
   task: Task
 }>()
 
-const focused = ref<boolean>(false)
+const stateObject = ref<State>(getState(task.stateId))
 
-const emit = defineEmits<{
-  (e: "delete", payload: ID): void
-}>()
 
-onKeyStroke("Backspace", (e) => {
-  if(focused.value) emit('delete', task.id)
+function getState (id: string){
+  return LIST_STATE.filter(s => s.id == id)[0]
+}
+
+watch(task, () => {
+  stateObject.value = getState(task.stateId)
 })
+
+const deleteTask = () => {
+  COLUMNS_DATA.value.forEach(col => {
+    col.tasks = col.tasks.filter(t => t.id !== task.id)
+  })
+}
+
 
 </script>
 
 <template>
-  <div class="border border-gray-300 p-2 m-1 rounded task border-l-8 bg-gray-200"
-       :class="{
-        'border-l-orange-400' : task.state == 'En cours',
-        'border-l-gray-800' : task.state == 'Ouvert',
-        'border-l-green-600' : task.state == 'Terminé'
-       }"
+  <div class="drop-shadow flex flex-col items-start px-4 py-2 my-2 mx-1 rounded-xl task bg-gray-100 relative cursor-pointer"
+       @click="optionTask = true"
        :title="task.id"
-       @focus="focused = true"
-       @blur="focused = false"
        tabindex="0"
   >
+    <div
+        class="text-sm px-2 rounded text-white"
+        :class="`bg-${stateObject.color}`"
+    >
+      {{stateObject.name}}
+    </div>
     <header class="flex gap-1 items-center">
       <span>{{ task.title }}</span>
     </header>
-    <p class="italic">{{ task.state }}</p>
+    <template v-if="optionTask">
+      <OptionTask
+          :task="task"
+          @close="optionTask=false"
+          @delete="deleteTask"
+      />
+    </template>
   </div>
-
 </template>
 
 <style>
-.task:focus,
-.task:focus-visible{
-  @apply outline-gray-400 !important;
-  outline: gray auto 1px;
-}
-
 .sortable-drag .task{
   transform: rotate(5deg);
 }

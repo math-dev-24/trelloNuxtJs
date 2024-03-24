@@ -9,9 +9,7 @@ export interface Column {
 export interface  Task{
     id: ID;
     title: string;
-    state: state;
-    content: string;
+    stateId: string;
     createdAt: Date;
 }
 
-export type state = "En cours" | "Terminé" | "Ouvert"
