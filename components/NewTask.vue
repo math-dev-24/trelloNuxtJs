@@ -2,6 +2,7 @@
 import type {Task} from "~/types";
 import {nanoid} from "nanoid";
 import {LIST_STATE} from "~/data/StateData";
+import {useBoard} from "~/stores/Board";
 
 const emit = defineEmits<{
   (e: "add", payload: Task): void
@@ -9,6 +10,7 @@ const emit = defineEmits<{
 
 const focused = ref<boolean>(false)
 const title = ref<string>("")
+const storeBoard = useBoard()
 
 function createTask(e: Event){
   if(title.value.trim()){
@@ -17,7 +19,7 @@ function createTask(e: Event){
       id: nanoid(),
       title: title.value.trim(),
       createdAt: new Date(),
-      stateId: LIST_STATE[0].id,
+      stateId: storeBoard.state_list[0].id,
     } as Task)
   title.value = ""
   }

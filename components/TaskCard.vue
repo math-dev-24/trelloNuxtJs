@@ -1,36 +1,19 @@
 <script setup lang="ts">
-import type {Task} from "~/types";
-import {LIST_STATE, type State} from "~/data/StateData";
-import {COLUMNS_DATA} from "~/data/ColumnsData";
-
-const emit = defineEmits<{
-  (e: "update", payload: Partial<Task>): void
-}>()
+import type {State, Task} from "~/types";
 
 const optionTask = ref<boolean>(false)
+const storeBoard = useBoard()
 
 
 const { task } = defineProps<{
   task: Task
 }>()
 
-const stateObject = ref<State>(getState(task.stateId))
-
-
-function getState (id: string){
-  return LIST_STATE.filter(s => s.id == id)[0]
-}
+const stateObject = ref<State>(storeBoard.get_state_task(task.stateId))
 
 watch(task, () => {
-  stateObject.value = getState(task.stateId)
+  stateObject.value = storeBoard.get_state_task(task.stateId)
 })
-
-const deleteTask = () => {
-  COLUMNS_DATA.value.forEach(col => {
-    col.tasks = col.tasks.filter(t => t.id !== task.id)
-  })
-}
-
 
 </script>
 
@@ -42,7 +25,7 @@ const deleteTask = () => {
   >
     <div
         class="text-sm px-2 rounded text-white"
-        :class="`bg-${stateObject.color}`"
+        :class="storeBoard.get_color(stateObject.colorId).color"
     >
       {{stateObject.name}}
     </div>
@@ -53,7 +36,7 @@ const deleteTask = () => {
       <OptionTask
           :task="task"
           @close="optionTask=false"
-          @delete="deleteTask"
+          @delete="storeBoard.delete_task(task.id)"
       />
     </template>
   </div>

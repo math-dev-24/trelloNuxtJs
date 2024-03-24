@@ -3,6 +3,9 @@ import { COLUMNS_DATA } from "~/data/ColumnsData";
 import draggable from "vuedraggable";
 import type {Column} from "~/types";
 import {nanoid} from "nanoid";
+import {useBoard} from "~/stores/Board";
+
+const storeBoard = useBoard()
 
 const createColumn = () => {
   const column : Column = {
@@ -10,26 +13,18 @@ const createColumn = () => {
     id: nanoid(),
     tasks: []
   };
-  COLUMNS_DATA.value.push(column);
+  storeBoard.add_column(column)
   nextTick(() => {
     (document.querySelector('.column:last-of-type .title-input') as HTMLInputElement).focus();
   })
 }
-
-watch(COLUMNS_DATA, () => {
-  // ajax request
-
-}, {
-  deep: true
-})
-
 </script>
 
 
 <template>
   <div class="flex items-start gap-4">
     <draggable
-        v-model="COLUMNS_DATA"
+        v-model="storeBoard.getColumns"
         group="columns"
         :animation="150"
         handle=".drag-handle"

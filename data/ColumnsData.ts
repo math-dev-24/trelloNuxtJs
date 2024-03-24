@@ -2,7 +2,7 @@ import type {Column} from "~/types";
 import {nanoid} from "nanoid";
 import {LIST_STATE} from "~/data/StateData";
 
-export const COLUMNS_DATA =  useLocalStorage<Column[]>("trelloBoard", [
+export const COLUMNS_DATA: Column[]  = [
     {
         id: nanoid(),
         title: "Projet 1",
@@ -11,20 +11,49 @@ export const COLUMNS_DATA =  useLocalStorage<Column[]>("trelloBoard", [
                 id: nanoid(),
                 title: "Faire ceci",
                 createdAt: new Date(),
-                stateId: LIST_STATE[1].id
+                stateId: LIST_STATE[1].id,
+                content: ""
             },
             {
                 id: nanoid(),
                 title: "Faire ca",
                 createdAt: new Date(),
-                stateId: LIST_STATE[0].id
+                stateId: LIST_STATE[0].id,
+                content: ""
             }
         ]
     },
     {
         id: nanoid(),
         title: "Selected for Dev",
-        tasks: []
+        tasks: [
+            {
+                id: nanoid(),
+                title: "Intégration maquette",
+                createdAt: new Date(),
+                stateId: LIST_STATE[0].id,
+                content: ""
+            }
+        ]
     },
+    {
+        id: nanoid(),
+        title: "Documentations",
+        tasks: [
+            {
+                id: nanoid(),
+                title: "VueJs",
+                createdAt: new Date(),
+                stateId: LIST_STATE[2].id,
+                content: "Lien de la documentation :"
+            },
+            {
+                id: nanoid(),
+                title: "NuxtJs",
+                createdAt: new Date(),
+                stateId: LIST_STATE[1].id,
+                content: ""
+            }
+        ]
+    }
 ]
-);

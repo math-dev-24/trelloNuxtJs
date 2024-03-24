@@ -11,5 +11,17 @@ export interface  Task{
     title: string;
     stateId: string;
     createdAt: Date;
+    content: string;
 }
 
+export interface State {
+    id: string;
+    name: string;
+    colorId: string;
+}
+
+export interface ColorInterface {
+    id: string,
+    name: string,
+    color: string
+}

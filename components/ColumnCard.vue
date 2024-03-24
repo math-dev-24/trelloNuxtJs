@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import type {Column, Task} from "~/types";
 import draggable from "vuedraggable";
-import {COLUMNS_DATA} from "~/data/ColumnsData";
-import {nanoid} from "nanoid";
+import {useBoard} from "~/stores/Board";
 
 const alt = useKeyModifier("Alt")
 const columnOption = ref<boolean>(false)
+const storeBoard = useBoard()
 
 const { column } = defineProps<{
   column: Column
 }>()
 
 const deleteColumn = () => {
-  COLUMNS_DATA.value = COLUMNS_DATA.value.filter(col => col.id != column.id)
+  storeBoard.delete_column(column.id)
   columnOption.value = false
 }
 const editColumn = () => {
@@ -20,23 +20,12 @@ const editColumn = () => {
   columnOption.value = false;
 }
 const duplicateColumn = () => {
-  const tasks: Task[] = column.tasks.map(t => {
-    return {
-      id: nanoid(),
-      title: t.title,
-      createdAt: new Date(),
-      stateId: t.stateId
-    }
-  })
-  const newCol: Column = {
-    title: `${column.title}_1`,
-    id: nanoid(),
-    tasks
-  }
-  COLUMNS_DATA.value.push(newCol)
+  storeBoard.duplicate_column(column)
   columnOption.value = false
 }
-
+const addTask = (e: Event) => {
+  storeBoard.add_task(column.id, e)
+}
 
 
 </script>
@@ -78,7 +67,7 @@ const duplicateColumn = () => {
       </template>
     </draggable>
     <footer>
-      <NewTask @add="column.tasks.push($event)" />
+      <NewTask @add="addTask($event)" />
     </footer>
   </div>
 </template>

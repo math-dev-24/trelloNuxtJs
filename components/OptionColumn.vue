@@ -3,7 +3,6 @@
 const emit = defineEmits<{
   (e: "delete"): void;
   (e: "hide"): void;
-  (e: 'rename'):void;
   (e: "duplicate"):void;
 }>()
 </script>
@@ -13,7 +12,6 @@ const emit = defineEmits<{
   <div class="border bg-gray-50 py-4 text-sm rounded-xl drop-shadow" @fo="emit('hide')">
     <p class="px-2 mb-4 text-center">Liste des actions</p>
     <ul>
-      <li @click="emit('rename')">Renomer</li>
       <li @click="emit('duplicate')">Duppliquer</li>
       <li class="text-red-600" @click="emit('delete')" >Supprimer</li>
     </ul>

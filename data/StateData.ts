@@ -1,23 +1,24 @@
-export interface State {
-    id: string;
-    name: string;
-    color: string;
-}
+import {nanoid} from "nanoid";
+import {COLOR_LIST} from "~/data/ColorData";
+import type {State} from "~/types";
+
+
 
 export const LIST_STATE: State[] = [
     {
-        id: "state_1",
+        id: nanoid(),
         name: "Ouvert",
-        color: "gray-800"
+        colorId: COLOR_LIST[0].id
     },
     {
-        id: "state_2",
+        id: nanoid(),
         name: "En cours",
-        color: "orange-400"
+        colorId: COLOR_LIST[1].id
     },
     {
-        id: "state_3",
+        id: nanoid(),
         name: "Terminé",
-        color: "green-600"
+        colorId: COLOR_LIST[2].id
     }
 ]
+
