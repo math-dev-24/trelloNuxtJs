@@ -12,7 +12,7 @@ const { task } = defineProps<{
 const stateObject = ref<State>(storeBoard.get_state_task(task.stateId))
 const stateColor = ref<string>(storeBoard.get_color(stateObject.value.colorId).code)
 
-watch(task, () => {
+watch((task, storeBoard.state_list), () => {
   stateObject.value = storeBoard.get_state_task(task.stateId)
   stateColor.value = storeBoard.get_color(stateObject.value.colorId).code
 })
