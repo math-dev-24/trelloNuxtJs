@@ -9,16 +9,23 @@ export const COLUMNS_DATA: Column[]  = [
         tasks : [
             {
                 id: nanoid(),
-                title: "Faire ceci",
+                title: "Initialisation du projet",
                 createdAt: new Date(),
                 stateId: LIST_STATE[1].id,
                 content: ""
             },
             {
                 id: nanoid(),
-                title: "Faire ca",
+                title: "Mise en place environnement",
                 createdAt: new Date(),
                 stateId: LIST_STATE[0].id,
+                content: ""
+            },
+            {
+                id: nanoid(),
+                title: "réfléxion sur ...",
+                createdAt: new Date(),
+                stateId: LIST_STATE[2].id,
                 content: ""
             }
         ]
@@ -32,6 +39,13 @@ export const COLUMNS_DATA: Column[]  = [
                 title: "Intégration maquette",
                 createdAt: new Date(),
                 stateId: LIST_STATE[0].id,
+                content: ""
+            },
+            {
+                id: nanoid(),
+                title: "Mise à jours librairie",
+                createdAt: new Date(),
+                stateId: LIST_STATE[3].id,
                 content: ""
             }
         ]

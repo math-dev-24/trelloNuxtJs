@@ -13,12 +13,17 @@ export const LIST_STATE: State[] = [
     {
         id: nanoid(),
         name: "En cours",
-        colorId: COLOR_LIST[1].id
+        colorId: COLOR_LIST[11].id
+    },
+    {
+        id: nanoid(),
+        name: "Bloqué",
+        colorId: COLOR_LIST[8].id
     },
     {
         id: nanoid(),
         name: "Terminé",
-        colorId: COLOR_LIST[2].id
+        colorId: COLOR_LIST[6].id
     }
 ]
 
