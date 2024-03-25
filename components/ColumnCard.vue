@@ -32,17 +32,15 @@ const addTask = (e: Event) => {
 
 <template>
   <div class="min-w-[300px] rounded-xl border bg-gray-300 py-2 px-0.5 drop-shadow-xl hover:drop-shadow transition duration-500 column relative">
+    <div class=" drag-handle cursor-move h-2 w-full"></div>
     <header class="font-bold mb-4 relative flex">
-      <div class=" drag-handle cursor-move">
         <input
             id="titleCol"
-            class="bg-transparent focus:bg-white focus:outline-green-400 rounded px-2 title-input"
+            class="bg-transparent focus:bg-white focus:outline-green-400 rounded px-2 title-input ml-2"
             v-model="column.title"
             @keyup.enter="($event.target as HTMLInputElement).blur()"
-            @keydown.delete="deleteColumn"
             type="text"
         />
-      </div>
       <div @focusout="columnOption = false" class="absolute right-2 -top-2">
         <span @click="columnOption = !columnOption" class="cursor-pointer">...</span>
         <OptionColumn
