@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {State, Task} from "~/types";
+import type {ColorInterface, State, Task} from "~/types";
 
 const optionTask = ref<boolean>(false)
 const storeBoard = useBoard()
@@ -10,9 +10,11 @@ const { task } = defineProps<{
 }>()
 
 const stateObject = ref<State>(storeBoard.get_state_task(task.stateId))
+const stateColor = ref<string>(storeBoard.get_color(stateObject.value.colorId).code)
 
 watch(task, () => {
   stateObject.value = storeBoard.get_state_task(task.stateId)
+  stateColor.value = storeBoard.get_color(stateObject.value.colorId).code
 })
 
 </script>
@@ -24,8 +26,7 @@ watch(task, () => {
        tabindex="0"
   >
     <div
-        class="text-sm px-2 rounded text-white"
-        :class="storeBoard.get_color(stateObject.colorId).color"
+        class="text-sm px-2 rounded text-white bg-state"
     >
       {{stateObject.name}}
     </div>
@@ -43,6 +44,9 @@ watch(task, () => {
 </template>
 
 <style>
+.bg-state{
+  background: v-bind(stateColor);
+}
 .sortable-drag .task{
   transform: rotate(5deg);
 }

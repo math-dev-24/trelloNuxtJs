@@ -13,14 +13,16 @@ const { task } = defineProps<{
 const storeBoard = useBoard()
 
 const stateObject = ref<State>(storeBoard.get_state_task(task.stateId))
-
+const stateColor = ref<string>(storeBoard.get_color(stateObject.value.colorId).code)
 
 watch(task, () => {
-  stateObject.value = storeBoard.get_state_task(task.stateId)
-
-  console.log(stateObject.value)
+  actualy_state()
 })
 
+function actualy_state(){
+  stateObject.value = storeBoard.get_state_task(task.stateId)
+  stateColor.value = storeBoard.get_color(stateObject.value.colorId).code
+}
 
 </script>
 
@@ -31,7 +33,7 @@ watch(task, () => {
         id="content"
         class="flex flex-col gap-2 absolute top-0 translate-y-full left-[30%] w-[30%] z-10 bg-white border p-4 rounded-xl drop-shadow"
     >
-      <select v-model="task.stateId" class="w-full pl-6 py-1 font-bold rounded mb-4 text-white" :class="storeBoard.get_color(stateObject.colorId).color">
+      <select v-model="task.stateId" class="w-full pl-6 py-1 font-bold rounded mb-4 text-white bg-state">
         <option v-for="state in storeBoard.state_list" :key="state.id" :value="state.id">{{state.name}}</option>
       </select>
       <input @keyup.enter="emit('close')" type="text" v-model="task.title" class="rounded px-2 py-1 text-xl bg-slate-100 focus:bg-slate-100">
@@ -45,6 +47,9 @@ watch(task, () => {
 </template>
 
 <style scoped>
+.bg-state{
+  background: v-bind(stateColor);
+}
 select{
   @apply outline-none;
 }

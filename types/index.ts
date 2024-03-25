@@ -23,5 +23,5 @@ export interface State {
 export interface ColorInterface {
     id: string,
     name: string,
-    color: string
+    code: string
 }

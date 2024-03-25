@@ -21,8 +21,8 @@ const storeBoard = useBoard()
         <template v-for="state in storeBoard.state_list" :key="state.id">
           <input v-model="state.name" class="focus:bg-white bg-transparent px-2">
           <div class="flex items-center content-center gap-2">
-            <select v-model="state.colorId" class="text-white px-4" :class="storeBoard.get_color(state.colorId).color">
-              <option v-for="color in storeBoard.color_list" :key="color.id" :value="color.id" :class="color.color">
+            <select v-model="state.colorId" class="px-4">
+              <option v-for="color in storeBoard.color_list" :key="color.id" :value="color.id">
                 {{color.name}}
               </option>
             </select>
