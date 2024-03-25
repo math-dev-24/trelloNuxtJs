@@ -1,5 +1,7 @@
 # TRELLO (bis) APP
 
+Tester en live : [go live](https://trello-fun.vercel.app/)
+
 ![image du dashboard trello](./public/fonctionnal.JPG)
 
 ![image de la gestion des status](./public/statut.JPG)
