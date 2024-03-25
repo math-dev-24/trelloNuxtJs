@@ -17,14 +17,6 @@ export const useBoard = defineStore("board", {
         state_list: LIST_STATE,
         color_list: COLOR_LIST
     }),
-    getters: {
-        getColumns(state): Column[] {
-            return state.columns_list
-        },
-        getState(state): State[] {
-            return state.state_list
-        }
-    },
     actions: {
         delete_column(column_id: ID): void {
             this.columns_list = this.columns_list.filter(c => c.id != column_id)

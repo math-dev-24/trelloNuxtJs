@@ -18,13 +18,14 @@ const createColumn = () => {
     (document.querySelector('.column:last-of-type .title-input') as HTMLInputElement).focus();
   })
 }
+
 </script>
 
 
 <template>
   <div class="flex items-start gap-4">
     <draggable
-        v-model="storeBoard.getColumns"
+        v-model="storeBoard.columns_list"
         group="columns"
         :animation="150"
         handle=".drag-handle"
