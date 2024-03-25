@@ -4,6 +4,8 @@
 
 ![image de la gestion des status](./public/statut.JPG)
 
+![image montrant la gestion du markDonw](./public/md.png)
+
 ## Todo list
 - [X] Gestion avec Pinia
 - [X] Columns
@@ -15,6 +17,7 @@
     -  [X] Create
     -  [X] Delete
     -  [X] Modify
+    -  [X] Modification du contenu (Prise en charge markDown)
     -  [X] Drag & Drop (Dupplicate with Alt touch)
 - [X] Statut
   - [X] Ajouter
@@ -22,6 +25,7 @@
   - [X] Renomer
   - [X] Gestion de la couleur
 
-- [ ] Back-end
+- [ ] Authentification
+- [ ] Back-end (à Faire)
   - [ ] CRUD
 

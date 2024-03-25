@@ -21,3 +21,23 @@
 .color_6{
     @apply bg-sky-500;
 }
+
+#editor{
+    @apply px-8 py-2;
+    a{
+        @apply text-blue-500 hover:underline;
+    }
+    h1{
+        @apply text-2xl font-bold mt-4 mb-1;
+    }
+    h2{
+        @apply  text-xl font-bold mt-2 mb-1;
+    }
+    h3{
+        @apply font-bold mt-2 mb-1;
+    }
+    ul{
+        @apply ml-8;
+        list-style-type: circle;
+    }
+}

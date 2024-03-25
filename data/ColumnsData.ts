@@ -43,10 +43,11 @@ export const COLUMNS_DATA: Column[]  = [
             },
             {
                 id: nanoid(),
-                title: "Mise à jours librairie",
+                title: "Map()",
                 createdAt: new Date(),
                 stateId: LIST_STATE[3].id,
-                content: ""
+                content: `## Exemple d'un map : 
+\`content.map(c => c.id == id)\`  `
             }
         ]
     },
@@ -59,7 +60,9 @@ export const COLUMNS_DATA: Column[]  = [
                 title: "VueJs",
                 createdAt: new Date(),
                 stateId: LIST_STATE[2].id,
-                content: "Lien de la documentation :"
+                content: `# Lien utile :
+- [VueJs officiel](https://vuejs.org/)
+- [nuxtJs officiel](https://nuxt.com/)`
             },
             {
                 id: nanoid(),
