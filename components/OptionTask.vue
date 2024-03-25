@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type {State, Task} from "~/types";
-import {LIST_STATE} from "~/data/StateData";
 
 const emit = defineEmits<{
   (e: "close") :void;
