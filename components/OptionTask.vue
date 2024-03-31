@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {ID, State, Task} from "~/types";
+import type {State, Task} from "~/types";
 import {marked} from "marked";
 import Checklist from "~/components/Checklist.vue";
 import {nanoid} from "nanoid";
@@ -9,8 +9,9 @@ const emit = defineEmits<{
   (e: "delete"): void;
 }>()
 
-const { task } = defineProps<{
+const { task, nameCol } = defineProps<{
   task: Task;
+  nameCol: string
 }>()
 
 const storeBoard = useBoard()
@@ -40,14 +41,20 @@ interface stateInterface{
   name: string, value: string
 }
 
+onMounted(() => resize_progress_bar())
 watch(task.checkList, () => {
-  if(task.checkList.length > 1){
+  resize_progress_bar()
+})
+
+function resize_progress_bar(){
+  if(task.checkList.length > 0){
     const line = document.getElementById('progress') as HTMLDivElement
     const max = task.checkList.length
     const checked = task.checkList.filter(c => c.state).length
     line.style.width = `${(checked / max) * 100}%`
   }
-})
+}
+
 
 const deleteCheck = (id: string) => {
   task.checkList =  task.checkList.filter(c => c.id != id)
@@ -78,6 +85,7 @@ const addCheck = () => {
           <UInput size="lg" @keyup.enter="emit('close')" type="text" v-model="task.title" class="font-bold flex-1" />
           <USelect size="lg" :options="listState" option-attribute="name" v-model="task.stateId"/>
         </div>
+        <span class="text-xs">Dans <span class="font-bold">{{nameCol}}</span></span>
       </template>
       <div class="my-2 flex flex-col gap-4 items-start">
         <UButton @click="editContent = !editContent" variant="soft" color="gray">
@@ -88,7 +96,7 @@ const addCheck = () => {
         <div v-else class="border rounded w-full" id="editor" v-html="marked.parse(task.content)" @click="editContent= true"></div>
       </div>
       <UDivider class="my-4" />
-      <div class="w-full h-2 overflow-hidden relative rounded mb-4" v-if="task.checkList.length">
+      <div class="w-full h-2 overflow-hidden relative rounded mb-4" v-show="task.checkList.length">
         <div class="w-full h-full bg-slate-300 z-0 absolute top-0 left-0"></div>
         <div id="progress" class="h-full bg-green-500 absolute top-0 left-0 z-10"></div>
       </div>

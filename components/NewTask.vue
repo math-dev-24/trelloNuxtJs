@@ -1,26 +1,29 @@
 <script setup lang="ts">
-import type {Task} from "~/types";
+import type {ID, Task} from "~/types";
 import {nanoid} from "nanoid";
 import {LIST_STATE} from "~/data/StateData";
 import {useBoard} from "~/stores/Board";
 
-const emit = defineEmits<{
-  (e: "add", payload: Task): void
-}>()
 
 const focused = ref<boolean>(false)
 const title = ref<string>("")
 const storeBoard = useBoard()
+const props = defineProps<{
+  colId: ID
+}>()
 
 function createTask(e: Event){
   if(title.value.trim()){
     e.preventDefault();
-    emit("add", {
+    const new_task: Task = {
       id: nanoid(),
       title: title.value.trim(),
       createdAt: new Date(),
       stateId: storeBoard.state_list[0].id,
-    } as Task)
+      checkList: [],
+      content: ""
+    }
+    storeBoard.add_task(props.colId, new_task)
   title.value = ""
   }
   focused.value = false
@@ -38,9 +41,9 @@ function createTask(e: Event){
         v-model="title"
         @keyup.enter="createTask"
         @click="focused = true"
-        class="w-full outline-none rounded-xl"
+        class="w-full outline-none rounded px-4"
         :class="{
-          'h-7 bg-transparent cursor-pointer hover:bg-slate-200' : !focused,
+          'h-7 bg-transparent cursor-pointer hover:bg-gray-200' : !focused,
           'h-14 px-2 py-1 drop-shadow': focused
         }"
         :placeholder="!focused ? ' + Ajouter une carte' : 'Saisissez un titre pour cette carte...' "

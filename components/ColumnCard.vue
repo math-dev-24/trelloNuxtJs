@@ -23,9 +23,6 @@ const duplicateColumn = () => {
   storeBoard.duplicate_column(column)
   columnOption.value = false
 }
-const addTask = (e: Event) => {
-  storeBoard.add_task(column.id, e)
-}
 
 
 </script>
@@ -60,12 +57,12 @@ const addTask = (e: Event) => {
     >
       <template #item="{element: task}: {element: Task}">
         <div>
-          <TaskCard :key="task.id" :task="task" @delete="column.tasks = column.tasks.filter(c => c.id != $event)" />
+          <TaskCard :key="task.id" :name-col="column.title" :task="task" @delete="column.tasks = column.tasks.filter(c => c.id != $event)" />
         </div>
       </template>
     </draggable>
     <footer>
-      <NewTask @add="addTask($event)" />
+      <NewTask :col-id="column.id" />
     </footer>
   </div>
 </template>

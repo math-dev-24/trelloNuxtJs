@@ -24,10 +24,6 @@ export const useBoard = defineStore("board", {
         add_column(new_col: Column): void {
             this.columns_list.push(new_col)
         },
-        edit_column(edit_column: Column): void {
-            const index: number = this.columns_list.findIndex(c => c.id == edit_column.id)
-            this.columns_list[index] = edit_column
-        },
         delete_task(task_id: string): void {
             this.columns_list.forEach( c => {
                 c.tasks = c.tasks.filter((t: Task) => t.id !== task_id)

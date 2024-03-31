@@ -8,20 +8,24 @@ const emit = defineEmits<{
 
 const storeBoard = useBoard()
 
+
+
 </script>
 
 <template>
   <Teleport to="body">
     <div class="fixed z-0 w-screen h-screen top-0 left-0 bg-slate-100 opacity-55" @click="emit('close')"></div>
-    <div class="fixed z-10 bg-gray-100 top-16 left-[25%] w-[50%] py-6 px-8 rounded">
-      <h2 class="my-2 text-xl font-bold">Gestion des statuts :</h2>
-      <div class="grid grid-cols-2 gap-2 bg-slate-50 rounded-xl p-2">
+    <UCard class="fixed z-10 top-16 left-[25%] w-[50%] py-6 px-8">
+      <template #header>
+        <h2 class="my-2 text-xl font-bold">Gestion des statuts :</h2>
+      </template>
+      <div class="grid grid-cols-2 gap-2">
           <div class="font-bold">Statut :</div>
           <div class="font-bold">Couleur :</div>
         <template v-for="state in storeBoard.state_list" :key="state.id">
-          <input v-model="state.name" class="focus:bg-white bg-transparent px-2">
+          <UInput v-model="state.name" class="focus:bg-white bg-transparent px-2 focus:outline-emerald-700" />
           <div class="flex items-center content-center gap-2">
-            <select v-model="state.colorId" class="px-4">
+            <select v-model="state.colorId" class="px-4 border-2 rounded py-0.5">
               <option v-for="color in storeBoard.color_list" :key="color.id" :value="color.id">
                 {{color.name}}
               </option>
@@ -33,6 +37,6 @@ const storeBoard = useBoard()
         </template>
       </div>
       <button class="mt-2 mx-4 text-gray-500" @click="storeBoard.add_state()">+ Ajouter un statut</button>
-    </div>
+    </UCard>
   </Teleport>
 </template>

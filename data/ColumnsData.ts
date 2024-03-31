@@ -13,7 +13,7 @@ export const COLUMNS_DATA: Column[]  = [
                 createdAt: new Date(),
                 stateId: LIST_STATE[1].id,
                 content: "",
-                checkList: [{id: nanoid(), content: "Dépôt git", state: false}, {id: nanoid(), content: 'Init git', state: false}]
+                checkList: [ {id: nanoid(), content: 'Init git', state: true},{id: nanoid(), content: "Dépôt git", state: false}]
             },
             {
                 id: nanoid(),
@@ -21,7 +21,7 @@ export const COLUMNS_DATA: Column[]  = [
                 createdAt: new Date(),
                 stateId: LIST_STATE[0].id,
                 content: "",
-                checkList: []
+                checkList: [{id: nanoid(), content:'listing des dépendance', state: false}]
             },
             {
                 id: nanoid(),
@@ -68,7 +68,7 @@ export const COLUMNS_DATA: Column[]  = [
                 content: `# Lien utile :
 - [VueJs officiel](https://vuejs.org/)
 - [nuxtJs officiel](https://nuxt.com/)`,
-                checkList: []
+                checkList: [{id: nanoid(), content: "checklist", state: true}]
             },
             {
                 id: nanoid(),
