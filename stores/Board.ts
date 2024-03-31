@@ -56,8 +56,6 @@ export const useBoard = defineStore("board", {
         },
         duplicate_column(column: Column): void {
             const task_duplicated: Task[] = column.tasks.map((t: Task) => {
-
-
                 return {
                     id: nanoid(),
                     title: t.title,

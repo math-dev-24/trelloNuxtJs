@@ -52,7 +52,7 @@ const duplicateColumn = () => {
 
     <draggable
         v-model="column.tasks"
-        :group="{name: 'tasks', pull: alt ? 'clone' : true}"
+        group="tasks"
         item-key="id"
     >
       <template #item="{element: task}: {element: Task}">
