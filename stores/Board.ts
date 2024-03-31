@@ -65,7 +65,8 @@ export const useBoard = defineStore("board", {
                     title: t.title,
                     stateId: t.stateId,
                     createdAt: new Date(),
-                    content: t.content
+                    content: t.content,
+                    checkList: [...t.checkList]
                 }
             })
             const column_duplicated: Column = {

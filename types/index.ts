@@ -12,6 +12,13 @@ export interface  Task{
     stateId: string;
     createdAt: Date;
     content: string;
+    checkList: CheckList[]
+}
+
+export interface CheckList{
+    id: string;
+    content: string;
+    state: boolean;
 }
 
 export interface State {

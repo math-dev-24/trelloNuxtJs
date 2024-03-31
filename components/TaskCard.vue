@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {ColorInterface, State, Task} from "~/types";
+import type {State, Task} from "~/types";
 
 const optionTask = ref<boolean>(false)
 const storeBoard = useBoard()
@@ -17,6 +17,14 @@ watch(storeBoard.columns_list, () => {
   stateColor.value = storeBoard.get_color(stateObject.value.colorId).code
 })
 
+function truncate(value: string){
+  if (value.length <= 28) {
+    return value;
+  } else {
+    return value.substring(0, 28) + '...';
+  }
+}
+
 </script>
 
 <template>
@@ -28,10 +36,10 @@ watch(storeBoard.columns_list, () => {
     <div
         class="text-sm px-2 rounded text-white bg-state"
     >
-      {{stateObject.name}}
+      {{stateObject.name }}
     </div>
     <header class="flex gap-1 items-center">
-      <span>{{ task.title }}</span>
+      <span>{{ truncate(task.title) }}</span>
     </header>
     <template v-if="optionTask">
       <OptionTask

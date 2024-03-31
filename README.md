@@ -15,12 +15,13 @@ Tester en live : [go live](https://trello-fun.vercel.app/)
   -  [X] Delete
   -  [X] Modify
   -  [X] Drag & Drop
-- [X] Tasks
+- [X] Rows
     -  [X] Create
     -  [X] Delete
     -  [X] Modify
     -  [X] Modification du contenu (Prise en charge markDown)
     -  [X] Drag & Drop (Dupplicate with Alt touch)
+    -  [X] Checklist Task
 - [X] Statut
   - [X] Ajouter
   - [X] Supprimer
