@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+.underline-effect{
+  @apply border-b-2 dark:border-none border-b-teal-100 dark:border-b-gray-200 hover:border-b-teal-300;
+  @apply bg-gradient-to-t from-teal-100 dark:from-slate-600;
+  @apply dark:hover:from-slate-400 hover:from-teal-300 transition-all duration-300 transform px-2;
+  @apply cursor-pointer rounded;
+}
+
+h1 {
+  @apply text-2xl md:text-3xl lg:text-4xl font-bold mb-2 mt-2 md:mt-6;
+}
+
+.disable-scroll{
+  overflow-y: hidden;
+  touch-action: none;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+.hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-effect::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.hover-effect:hover::before {
+  width: 100%;
+}
+
+
+.card-tool {
+  @apply bg-white dark:bg-gray-800 mx-auto relative;
+  @apply  rounded-xl border shadow-sm  border-gray-200 dark:border-gray-700 overflow-hidden;
+
+  .tool-header {
+    @apply border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4;
+
+    .tool-header-title {
+      @apply text-xl md:text-2xl font-bold text-gray-900 dark:text-white text-center flex items-center justify-center gap-1 md:gap-2;
+
+      span {
+        @apply mr-2 text-primary-500 w-12 h-12;
+      }
+    }
+    .tool-header-description {
+      @apply text-gray-700 dark:text-gray-300 text-sm text-center;
+    }
+
+
+  }
+  .content {
+    @apply p-6;
+  }
+}

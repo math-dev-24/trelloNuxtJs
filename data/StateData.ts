@@ -7,22 +7,22 @@ import type {State} from "~/types";
 export const LIST_STATE: State[] = [
     {
         id: nanoid(),
-        name: "Ouvert",
+        label: "Ouvert",
         colorId: COLOR_LIST[0].id
     },
     {
         id: nanoid(),
-        name: "En cours",
+        label: "En cours",
         colorId: COLOR_LIST[11].id
     },
     {
         id: nanoid(),
-        name: "Bloqué",
+        label: "Bloqué",
         colorId: COLOR_LIST[8].id
     },
     {
         id: nanoid(),
-        name: "Terminé",
+        label: "Terminé",
         colorId: COLOR_LIST[6].id
     }
 ]

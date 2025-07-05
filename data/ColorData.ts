@@ -5,67 +5,67 @@ import type {ColorInterface} from "~/types";
 export const COLOR_LIST: ColorInterface[] = [
     {
         id: nanoid(),
-        name: "Slate",
+        label: "Slate",
         code: "#64748b"
     },
     {
         id: nanoid(),
-        name: "Gray",
+        label: "Gray",
         code: "#6b7280"
     },
     {
         id: nanoid(),
-        name: "Stone",
+        label: "Stone",
         code: "#78716c"
     },
     {
         id: nanoid(),
-        name: "Orange",
+        label: "Orange",
         code: "#f97316"
     },
     {
         id: nanoid(),
-        name: "Vert",
+        label: "Vert",
         code: "#22c55e"
     },
     {
         id: nanoid(),
-        name: "Amber",
+        label: "Amber",
         code: "#f59e0b"
     },
     {
         id: nanoid(),
-        name: "Emerald",
+        label: "Emerald",
         code: "#10b981"
     },
     {
         id:  nanoid(),
-        name: "Sky",
+        label: "Sky",
         code: "#0ea5e9"
     },
     {
         id:  nanoid(),
-        name: "Red",
+        label: "Red",
         code: "#ef4444"
     },
     {
         id:  nanoid(),
-        name: "Dark Red",
+        label: "Dark Red",
         code: "#b91c1c"
     },
     {
         id:  nanoid(),
-        name: "Indigo",
+        label: "Indigo",
         code: "#6366f1"
     },
     {
         id:  nanoid(),
-        name: "Fuschia",
+        label: "Fuschia",
         code: "#c026d3"
     },
     {
         id:  nanoid(),
-        name: "Rose",
+        label: "Rose",
         code: "#f43f5e"
     }
 ]

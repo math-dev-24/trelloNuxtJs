@@ -23,12 +23,12 @@ export interface CheckList{
 
 export interface State {
     id: string;
-    name: string;
+    label: string;
     colorId: string;
 }
 
 export interface ColorInterface {
     id: string,
-    name: string,
+    label: string,
     code: string
 }
